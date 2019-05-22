@@ -82,12 +82,12 @@ class Microdata_Nav_Walker extends Walker_Nav_Menu {
 		// Build HTML output and pass through the proper filter.
 		$item_output = sprintf(
 			'%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
-			$args->before,
+			( ! empty( $args->before ) ? $args->before : '' ),
 			$attributes,
-			$args->link_before,
+			( ! empty( $args->link_before ) ? $args->link_before : '' ),
 			apply_filters( 'the_title', $item->title, $item->ID ),
-			$args->link_after,
-			$args->after
+			( ! empty( $args->link_after ) ? $args->link_after : '' ),
+			( ! empty( $args->after ) ? $args->after : '' )
 		);
 
 		$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
